@@ -39,7 +39,7 @@ function [H, pValue, W] = swtest(x, alpha)
 %     H = 1 => Reject the null hypothesis at significance level ALPHA.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                Copyright (c) 17 March 2009 by Ahmed Ben Saïda          %
+%                Copyright (c) 17 March 2009 by Ahmed Ben SaÃ¯da          %
 %                 Department of Finance, IHEC Sousse - Tunisia           %
 %                       Email: ahmedbensaida@yahoo.com                   %
 %                    $ Revision 3.0 $ Date: 18 Juin 2014 $               %
