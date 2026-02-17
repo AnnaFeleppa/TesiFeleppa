@@ -1,0 +1,15 @@
+function calcola_media(dati_MB, dati_ML, mov, cartella_risultati_confronto)
+% CALCOLA_MEDIA - Calcola la media di ciascun segmento (esclusi primo e ultimo) per MB e ML e salva il confronto.
+
+risultati_MB = calcola_singolo_parametro(dati_MB, 'Media', @mean);
+risultati_ML = calcola_singolo_parametro(dati_ML, 'Media', @mean);
+
+if isempty(risultati_MB) || isempty(risultati_ML)
+    fprintf('Impossibile confrontare le medie: segmenti insufficienti o non validi in uno dei file.\n');
+    return;
+end
+
+gestisci_salvataggio_risultati_confronto(mov, 'Media', risultati_MB, risultati_ML, cartella_risultati_confronto, dati_MB.name, dati_ML.name);
+fprintf('Confronto Medie completato.\n');
+
+end
