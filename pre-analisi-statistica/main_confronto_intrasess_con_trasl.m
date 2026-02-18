@@ -6,7 +6,7 @@ clear all;
 
 close all;
 
-%% ========= PARAMETRI =========
+% ========= PARAMETRI =========
 
 TARGET_SHEET      = 'Joint Angles ZXY';
 
@@ -28,7 +28,7 @@ dati_ML = struct('Frames_minimi', {}, 'name', {}, 'cartella_risultati', {});
 
 cartella_risultati = ''; % Inizializzata qui
 
-%% ========= CICLO DI ELABORAZIONE PER ENTRAMBI I FILE (MB e ML) =========
+
 
 for i = 1:2
 
@@ -68,7 +68,7 @@ for i = 1:2
 
     
 
-    %% ========= ASSOCIAZIONE AUTOMATICA MOVIMENTO → COLONNA =========
+    % ========= ASSOCIAZIONE AUTOMATICA MOVIMENTO → COLONNA =========
 
     if is_primo_file
 
@@ -82,7 +82,6 @@ for i = 1:2
 
         
 
-      % Controlliamo che la stringa sia lunga almeno 3 caratteri per evitare errori di indicizzazione.
 
         if length(name_originale) >= 3
 
@@ -98,7 +97,7 @@ for i = 1:2
 
         end
 
-        % 2. Creazione della cartella risultati
+        % cartella risultati
 
         nome_cartella = [codice_soggetto '-' mov_cartella '-CONFRONTO-RISULTATI'];
 
@@ -343,7 +342,7 @@ calcola_rom(dati_MB, dati_ML, mov, cartella_risultati);
 calcola_area(dati_MB, dati_ML, mov, cartella_risultati);
 fprintf('\n=== Generazione grafici di confronto ciclo-ciclo ===\n');
 
-% Caricamento dei dati .mat generati da unisci_segmenti_normalizzati_st
+% Caricamento dati  da unisci_segmenti_normalizzati_st
 dataMB = load(fullfile(dati_MB.cartella_risultati, [dati_MB.name '_segmenti_centrali.mat']));
 dataML = load(fullfile(dati_ML.cartella_risultati, [dati_ML.name '_segmenti_centrali.mat']));
 
@@ -377,14 +376,10 @@ for k = 1:num_cicli_disponibili
     % Legenda con i nomi dei file (puliti dagli underscore per evitare il pedice)
     legend(strrep(nome_legenda_MB,'_','-'), strrep(nome_legenda_ML,'_','-'), 'Location', 'best');
     
-    % Salvataggio file
-    nome_output = sprintf('Confronto_Ciclo_%02d.png', id_ciclo);
-    saveas(h_fig, fullfile(path_confronto, nome_output));
     
-    close(h_fig); 
-    fprintf('Salvato grafico: %s\n', nome_output);
 end
 
 fprintf('\n Pipeline completata.\n');
 
 end
+
