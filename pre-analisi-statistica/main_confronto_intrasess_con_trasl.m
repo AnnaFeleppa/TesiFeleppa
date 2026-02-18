@@ -346,22 +346,19 @@ fprintf('\n=== Generazione grafici di confronto ciclo-ciclo ===\n');
 dataMB = load(fullfile(dati_MB.cartella_risultati, [dati_MB.name '_segmenti_centrali.mat']));
 dataML = load(fullfile(dati_ML.cartella_risultati, [dati_ML.name '_segmenti_centrali.mat']));
 
-% Creazione cartella dedicata
-path_confronto = fullfile(cartella_risultati, 'confronto ciclo ciclo');
-if ~exist(path_confronto, 'dir'), mkdir(path_confronto); end
 
-% Identificazione nomi per legenda (usa i nomi dei file originali salvati in dati_MB/ML)
+% Identificazione nomi per legenda 
 nome_legenda_MB = dati_MB.name; 
 nome_legenda_ML = dati_ML.name;
 
-% Determino quanti cicli confrontare (il minimo comune tra i due file)
+
 num_cicli_disponibili = min(size(dataMB.segmenti_uniti, 2), size(dataML.segmenti_uniti, 2));
 
 for k = 1:num_cicli_disponibili
-    % Recupero il numero originale del ciclo (es. 2, 3, 4...)
+    
     id_ciclo = dataMB.nuovi_nomi_cicli(k); 
     
-    h_fig = figure('Visible', 'off'); % Non apre 8 finestre, lavora in background
+    h_fig = figure('Visible', 'off'); % 
     hold on;
     
     % Plot MB (Blu) e ML (Rosso)
@@ -382,4 +379,5 @@ end
 fprintf('\n Pipeline completata.\n');
 
 end
+
 
