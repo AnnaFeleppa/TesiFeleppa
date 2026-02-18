@@ -8,8 +8,8 @@ fprintf('→ Salvataggio risultati %s in %s\n', upper(nome_parametro), nome_file
 [~, nome_MB_base, ~] = fileparts(nome_MB_input);
 [~, nome_ML_base, ~] = fileparts(nome_ML_input);
 
-% 2. Estrazione diretta dei primi tre caratteri (es. '001')
-%    Assicuriamo che sia una stringa classica (char array) prima dell'indicizzazione.
+% Estrazione diretta dei primi tre caratteri (es. '001')
+
 if isstring(nome_MB_base)
     nome_MB_base = char(nome_MB_base);
 end
@@ -17,8 +17,7 @@ if isstring(nome_ML_base)
     nome_ML_base = char(nome_ML_base);
 end
 
-% 3. Prendiamo i primi tre caratteri
-%    Se la stringa è lunga almeno 3 caratteri.
+
 if length(nome_MB_base) >= 3
     soggetto_MB = nome_MB_base(1:3); % Estrae '001'
 else
@@ -34,7 +33,6 @@ else
 end
 
 
-% Assicuriamoci che i segmenti siano allineati per il confronto.
 ids = risultati_MB.Segmento;
 vals_MB = risultati_MB{:, 2};
 vals_ML = risultati_ML{:, 2};
@@ -71,3 +69,4 @@ nuovi_risultati = table(col_soggetto_MB, col_segmento_MB, col_parametro_MB, ...
 
 
 end
+
